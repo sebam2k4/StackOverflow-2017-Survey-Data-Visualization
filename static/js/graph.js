@@ -26,6 +26,14 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         // define the types
         // split multiple answer strings to arrays
         d.HaveWorkedLanguage = d.HaveWorkedLanguage.split("; ");
+        d.HaveWorkedFramework = d.HaveWorkedFramework.split("; ");
+        d.HaveWorkedDatabase = d.HaveWorkedDatabase.split("; ");
+        d.IDE = d.IDE.split("; ");
+        d.Methodology = d.Methodology.split("; ");
+        d.VersionControl = d.VersionControl.split("; ");
+        d.DeveloperType = d.DeveloperType.split("; ");
+        d.EducationTypes = d.EducationTypes.split("; ");
+        d.CareerSatisfaction = String(d.CareerSatisfaction);
     });
 
     var stack2017 = crossfilter(data);
