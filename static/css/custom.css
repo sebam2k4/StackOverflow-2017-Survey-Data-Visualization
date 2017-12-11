@@ -1,0 +1,40 @@
+
+.dc-chart g.row text {
+    fill: black;
+}
+
+/* setting width to fill parent container for select menus
+check how this may affect bar, row, and other charts */
+.dc-chart { /* add .menu class in html */
+    width: 100%
+}
+.dc-select-menu {
+    background: slategray;
+    width: 85%;
+    border: none;
+    position: relative;
+    height: 31px;
+    font-size: 15px;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 0px;
+}
+
+#languageChart .x.axis text {
+    text-anchor: end !important;
+    -ms-transform: rotate(-45deg) translate(-8px, 0px); /* IE 9 */
+    -webkit-transform: rotate(-45deg) translate(-8px, 0px); /* Safari */
+    transform: rotate(-45deg) translate(-8px, 0px);
+    transition: .5s;
+}
+
+@media (max-width: 768px) {
+    #languageChart .x.axis text {
+        -ms-transform: rotate(-90deg) translate(-10px, -13px); /* IE 9 */
+        -webkit-transform: rotate(-90deg) translate(-10px, -13px); /* Safari */
+        transform: rotate(-90deg) translate(-10px, -13px);
+        transition: .5s;
+    }
+}
