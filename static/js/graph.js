@@ -199,7 +199,25 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         .dimension(relatedLanguagesDim)
         .group(relatedLanguagesGroup);
 
-        
+
     dc.renderAll();
+
+
+    // make the language bar chart responsive
+    // how to make the bars change width as well?
+    //source for below code: https://css-tricks.com/snippets/jquery/done-resizing-event/
+    var resizer;
+    window.onresize = function(event) {
+        clearTimeout(resizer);
+        resizer = setTimeout(function() {
+            var newWidth = document.getElementById('languageChartContainer').offsetWidth;
+            languageChart.width(newWidth)
+            
+            dc.renderAll(); // chart gets cut off when screen made wider than initial width
+            // the svg's width doesn't update
+            // using dc.renderAll() works but rerenders all charts
+        }, 200);
+    };
+    
 };
 
