@@ -60,6 +60,41 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         .elasticX(true)
         .yAxis().ticks(6);
     
+    //Employment Status selector:
+    var employmentStatusDim = stack2017.dimension(function(d) {
+        return d.EmploymentStatus;
+    });
+
+    var languageByEmploymentStatus = employmentStatusDim.group();
+    var employmentStatusMenu = dc.selectMenu("#employmentStatusMenu")
+    employmentStatusMenu
+        .dimension(employmentStatusDim)
+        .group(languageByEmploymentStatus);
+
+
+    //Employment Status selector:
+    var formalEducationDim = stack2017.dimension(function(d) {
+        return d.FormalEducation;
+    });
+
+    var languageByFormalEducation = formalEducationDim.group();
+    var formalEducationMenu = dc.selectMenu("#formalEducationMenu")
+    formalEducationMenu
+        .dimension(formalEducationDim)
+        .group(languageByFormalEducation);
+
+
+    // Education Type Selector:
+    var educationTypesDim = stack2017.dimension(function(d) {
+        return d.EducationTypes;
+    }, true);
+
+    var languageByEducationTypesGroup = educationTypesDim.group();
+    var educationTypesMenu = dc.selectMenu("#educationTypesMenu")
+    educationTypesMenu
+        .dimension(educationTypesDim)
+        .group(languageByEducationTypesGroup);
+    
     dc.renderAll();
 };
 

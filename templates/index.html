@@ -22,8 +22,9 @@
   </div>
 
   <div id="outer" class="container-fluid">
-    <p>*Languages and technologies used for extensively development work in over the past year and which the developers want to continue using over the next year</p>
-    
+    <p>*Languages and technologies used for extensively development work in over the past year and which the developers want
+      to continue using over the next year</p>
+
     <div class="row">
       <!-- Bar Chart -->
       <div class="col-sm-12">
@@ -38,8 +39,48 @@
       </div>
     </div>
 
+    <div class="row">
+      <!-- Menu Select - Employment Status -->
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Select Employment Status
+          </div>
+          <div class="chart-stage">
+            <div id="employmentStatusMenu"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Select - Formal Education-->
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Select Formal Education
+          </div>
+          <div class="chart-stage">
+            <div id="formalEducationMenu"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Select - Coding Education Type -->
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Education Type outside of Formal
+          </div>
+          <div class="chart-stage">
+            <div id="educationTypesMenu"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
-  
+
   <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
   <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
   <script src="{{ url_for ('static', filename='lib/js/crossfilter.min.js')}}"></script>
