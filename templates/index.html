@@ -21,7 +21,25 @@
     </div>
   </div>
 
+  <div id="outer" class="container-fluid">
+    <p>*Languages and technologies used for extensively development work in over the past year and which the developers want to continue using over the next year</p>
+    
+    <div class="row">
+      <!-- Bar Chart -->
+      <div class="col-sm-12">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Languages Have Worked With
+          </div>
+          <div class="chart-stage" id="languageChartContainer">
+            <div id="languageChart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+  </div>
+  
   <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
   <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
   <script src="{{ url_for ('static', filename='lib/js/crossfilter.min.js')}}"></script>
