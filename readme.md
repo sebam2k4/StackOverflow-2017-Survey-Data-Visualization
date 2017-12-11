@@ -66,3 +66,7 @@ The following data collection attributes/fields will be used as the basis of the
 ## Other Issues and notes
 
 ## Contributing
+
+
+## TO DO:
+- remove non developers from the MongoDB
