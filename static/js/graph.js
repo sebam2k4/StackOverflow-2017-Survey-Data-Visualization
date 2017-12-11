@@ -130,6 +130,47 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         .dimension(careerSatisfactionDim)
         .group(languageByCareerSatisfactionGroup);
 
+
+    // Database chart:
+    var databaseDim = stack2017.dimension(function (d) {
+        return d.HaveWorkedDatabase;
+    }, true);
+
+    var languageByDatabaseGroup = databaseDim.group();
+
+    var databaseChart = dc.rowChart("#databaseChart");
+
+    databaseChart
+        .width(400)
+        .height(250)
+        .dimension(databaseDim)
+        .group(languageByDatabaseGroup)
+        .ordinalColors(["#1f77b4"])
+        .transitionDuration(1000)
+        .othersGrouper(false)
+        .elasticX(true)
+        .xAxis().ticks(4);
+
+
+    //Framework chart:
+    var frameworkDim = stack2017.dimension(function (d) {
+        return d.HaveWorkedFramework;
+    }, true)
+
+    var languageByFrameworkGroup = frameworkDim.group();
+    var frameworkChart = dc.rowChart("#frameworkChart");
+
+    frameworkChart
+        .width(400)
+        .height(250)
+        .dimension(frameworkDim)
+        .group(languageByFrameworkGroup)
+        .ordinalColors(["#1f77b4"])
+        .transitionDuration(1000)
+        .othersGrouper(false)
+        .elasticX(true)
+        .xAxis().ticks(4);
+
     dc.renderAll();
 };
 
