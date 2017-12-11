@@ -179,6 +179,27 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         .elasticX(true)
         .xAxis().ticks(4);
 
+
+    // total selected results Display
+    var all = stack2017.groupAll();
+    var numberSelectedND = dc.numberDisplay("#numberSelectedND");
+    numberSelectedND
+    .formatNumber(d3.format(",.0f"))
+    .valueAccessor(function (d) {return d;})
+    .group(all);
+
+    // related languages menu select
+    var relatedLanguagesDim = stack2017.dimension(function(d) {
+        return d.HaveWorkedLanguage;
+    }, true);
+
+    var relatedLanguagesGroup = relatedLanguagesDim.group();
+    var relatedLanguagesMenu = dc.selectMenu("#relatedLanguages")
+    relatedLanguagesMenu
+        .dimension(relatedLanguagesDim)
+        .group(relatedLanguagesGroup);
+
+        
     dc.renderAll();
 };
 
