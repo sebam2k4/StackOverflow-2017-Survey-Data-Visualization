@@ -29,8 +29,16 @@ def stack2017_data():
     A Flask view to serve project data from
     MongoDB in JSON format
     """
-
-
+    # A constant (uppercase) that defines the record fields that we wish to retrieve
+    # Need to explicitly exclude '_id' field as it it automatically included in the retured documents
+    FIELDS = {
+        '_id': False, 'Professional': True, 'Country': True,
+        'EmploymentStatus': True, 'FormalEducation': True, 'MajorUndergrad': True,
+        'YearsProgram': True, 'DeveloperType': True, 'EducationTypes': True,
+        'HaveWorkedLanguage': True, 'HaveWorkedFramework': True, 'HaveWorkedDatabase': True,
+        'IDE': True, 'Methodology': True, 'VersionControl': True,
+        'CareerSatisfaction': True, 'JobSatisfaction': True
+    }
 
     # Open a connection to MongoDB using a 'with' statement such that the
     # connection will be closed as soon as we exit the 'with' statement
