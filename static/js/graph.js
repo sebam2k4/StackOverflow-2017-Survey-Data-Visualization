@@ -46,9 +46,6 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
 
     var languagesGroup = languageDim.group();
 
-    print_filter(languagesGroup);
-    console.log(languagesGroup);
-
     var languageChart = dc.barChart("#languageChart");
 
     // get width for initial render of the bar chart. The bar chart is responsive
@@ -65,8 +62,41 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .elasticY(true)
-        .elasticX(true)
+        .gap(3)
+        .renderHorizontalGridLines(true)
+        //.elasticX(true)
+        
+
         .yAxis().ticks(6);
+
+    // Pie Chart - Country
+     /* function to make a string from a game's rating, showing which integer
+    range it falls in */  
+    var countryDim = stack2017.dimension(function (d) {
+        return d.Country
+    });
+
+    var countryGroup = countryDim.group();
+    // create another group to calculcate percentage affected by other filters
+    var countryGroup2 = countryDim.groupAll().reduceCount();
+
+    var countryChart = dc.pieChart("#CountryPieChart");
+    //console.log(countryGroup.value)
+   // print_filter(countryGroup)
+    countryChart
+        .height(350)
+        .width(350)
+        .innerRadius(60)
+        .dimension(countryDim)
+        .group(countryGroup)
+        .transitionDuration(1000)
+        .slicesCap(10)
+        .label(function(d) { return d.key + ' (' + (d.value/countryGroup2.value()*100).toFixed(1) + '%)'; })
+        //.externalLabels(10)
+        .othersGrouper(false);
+
+
+
 
     //Employment Status selector:
     var employmentStatusDim = stack2017.dimension(function (d) {
@@ -211,12 +241,11 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         clearTimeout(resizer);
         resizer = setTimeout(function() {
             var newWidth = document.getElementById('languageChartContainer').offsetWidth;
-            languageChart.width(newWidth)
+            languageChart
+                .width(newWidth)
             
-            dc.renderAll(); // chart gets cut off when screen made wider than initial width
-            // the svg's width doesn't update
-            // using dc.renderAll() works but rerenders all charts
-        }, 200);
+            dc.renderAll();
+        }, 300);
     };
     
 };
