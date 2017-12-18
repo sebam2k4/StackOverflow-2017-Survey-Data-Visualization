@@ -243,6 +243,7 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
             var newWidth = document.getElementById('languageChartContainer').offsetWidth;
             languageChart
                 .width(newWidth)
+                .rescale() // resets the scale and bars widths + margins (gap)
             
             dc.renderAll();
         }, 300);
