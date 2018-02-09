@@ -1,237 +1,206 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Coding Language Popularity by criteria - based on the StackOverflow Survey 2017 Results</title>
-  <link rel="stylesheet" href="{{ url_for ('static',
-    filename='lib/css/bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{ url_for ('static',
-    filename='lib/css/keen-dashboards.css')}}">
-  <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
-  <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
-  <!--<link rel="stylesheet" href="{{url_for ('static', filename='lib/css/introjs.css')}}" />-->
-</head>
+{% block content %}
 
-<body class="application">
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="./">Coding Language Popularity by criteria - based on the StackOverflow Survey 2017 Results</a>
+<div id="outer" class="container-fluid">
+  <p>*Languages and technologies used for extensively development work in over the past year and which the developers want
+    to continue using over the next year</p>
+
+  <div class="row">
+    <!-- Bar Chart - Languages -->
+    <div class="col-lg-8">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Languages Have Worked With
+        </div>
+        <div class="chart-stage" id="languageChartContainer">
+          <div id="languageChart"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Pie Chart - Country From -->
+    <div class="col-lg-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Country
+        </div>
+        <div class="chart-stage">
+          <div id="CountryPieChart"></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div id="outer" class="container-fluid">
-    <p>*Languages and technologies used for extensively development work in over the past year and which the developers want
-      to continue using over the next year</p>
 
-    <div class="row">
-      <!-- Bar Chart - Languages -->
-      <div class="col-md-12 col-lg-8">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Languages Have Worked With
-          </div>
-          <div class="chart-stage" id="languageChartContainer">
-            <div id="languageChart"></div>
-          </div>
+  <div class="row">
+    <!-- Menu Select - Employment Status -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Select Employment Status
         </div>
-      </div>
-
-
-
-      <!-- Pie Chart - Country From -->
-      <div class="col-md-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Country
-          </div>
-          <div class="chart-stage">
-            <div id="CountryPieChart"></div>
-          </div>
+        <div class="chart-stage">
+          <div id="employmentStatusMenu"></div>
         </div>
       </div>
     </div>
 
-
-    <div class="row">
-      <!-- Menu Select - Employment Status -->
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Select Employment Status
-          </div>
-          <div class="chart-stage">
-            <div id="employmentStatusMenu"></div>
-          </div>
+    <!-- Menu Select - Formal Education-->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Select Formal Education
         </div>
-      </div>
-
-      <!-- Menu Select - Formal Education-->
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Select Formal Education
-          </div>
-          <div class="chart-stage">
-            <div id="formalEducationMenu"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Menu Select - Coding Education Type -->
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Education Type outside of Formal
-          </div>
-          <div class="chart-stage">
-            <div id="educationTypesMenu"></div>
-          </div>
+        <div class="chart-stage">
+          <div id="formalEducationMenu"></div>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <!-- Menu Select - Developer Type -->
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Select Developer Type
-          </div>
-          <div class="chart-stage">
-            <div id="developerTypeMenu"></div>
-          </div>
+    <!-- Menu Select - Coding Education Type -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Education Type outside of Formal
         </div>
-      </div>
-
-      <!-- Menu Select - Major Undergrad-->
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Select Major Undergrad
-          </div>
-          <div class="chart-stage">
-            <div id="majorUndergradMenu"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Menu Select - Career Satisfaction -->
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Select Career Satisfaction
-          </div>
-          <div class="chart-stage">
-            <div id="careerSatisfactionMenu"></div>
-          </div>
+        <div class="chart-stage">
+          <div id="educationTypesMenu"></div>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <!-- Row Chart - Database Worked With-->
-      <div class="col-sm-6">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Database Environments Have Worked With
-          </div>
-          <div class="chart-stage">
-            <div id="databaseChart"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Menu Select - Framework Worked With -->
-      <div class="col-sm-6">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Frameworks, Libraries, &amp; Tools Have Worked With
-          </div>
-          <div class="chart-stage">
-            <div id="frameworkChart"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <!-- Number Display - Number of Selected -->
-      <div class="col-sm-6">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Total Selected
-          </div>
-          <div class="chart-stage">
-            <div id="numberSelectedND"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Related Languages Menu -->
-      <div class="col-sm-6">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Related languages
-          </div>
-          <div class="chart-stage">
-            <div id="relatedLanguages"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <!-- Menu Select -->
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Top
-          </div>
-          <div class="chart-stage">
-            <div id=""></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Menu Select - -->
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Select Formal Education
-          </div>
-          <div class="chart-stage">
-            <div id=""></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Menu Select -  -->
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Education Type outside of Formal
-          </div>
-          <div class="chart-stage">
-            <div id=""></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
-  <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
-  <script src="{{ url_for ('static', filename='lib/js/crossfilter.min.js')}}"></script>
-  <script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
-  <script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
-  <script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
-  <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
-  <script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
-  <script src="{{ url_for ('static', filename='js/script.js')}}"></script>
-  <!--<script src="{{ url_for ('static', filename='lib/js/intro.js')}}" type="text/javascript"></script>-->
-</body>
+  <div class="row">
+    <!-- Menu Select - Developer Type -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Select Developer Type
+        </div>
+        <div class="chart-stage">
+          <div id="developerTypeMenu"></div>
+        </div>
+      </div>
+    </div>
 
-</html>
+    <!-- Menu Select - Major Undergrad-->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Select Major Undergrad
+        </div>
+        <div class="chart-stage">
+          <div id="majorUndergradMenu"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Select - Career Satisfaction -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Select Career Satisfaction
+        </div>
+        <div class="chart-stage">
+          <div id="careerSatisfactionMenu"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Row Chart - Database Worked With-->
+    <div class="col-sm-6">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Database Environments Have Worked With
+        </div>
+        <div class="chart-stage">
+          <div id="databaseChart"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Select - Framework Worked With -->
+    <div class="col-sm-6">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Frameworks, Libraries, &amp; Tools Have Worked With
+        </div>
+        <div class="chart-stage">
+          <div id="frameworkChart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Number Display - Number of Selected -->
+    <div class="col-sm-6">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Total Selected
+        </div>
+        <div class="chart-stage">
+          <div id="numberSelectedND"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Languages Menu -->
+    <div class="col-sm-6">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Related languages
+        </div>
+        <div class="chart-stage">
+          <div id="relatedLanguages"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Menu Select -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Top
+        </div>
+        <div class="chart-stage">
+          <div id=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Select - -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Select Formal Education
+        </div>
+        <div class="chart-stage">
+          <div id=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Select -  -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Education Type outside of Formal
+        </div>
+        <div class="chart-stage">
+          <div id=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
