@@ -37,6 +37,8 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
     });
 
     var stack2017 = crossfilter(data);
+    //var allData = stack2017.groupAll();
+    //var allValues = allData.value()
 
     // Main Language chart - ordinal scale
     var languageDim = stack2017.dimension(function (d) {
@@ -67,7 +69,6 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         //.elasticX(true)
         .yAxis().ticks(6);
 
-    console.log(languageChart)
     // Pie Chart - Country
      /* function to make a string from a game's rating, showing which integer
     range it falls in */  
@@ -88,11 +89,19 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         .innerRadius(60)
         .dimension(countryDim)
         .group(countryGroup)
-        .transitionDuration(1000)
-        .slicesCap(10)
-        .label(function(d) { return d.key + ' (' + (d.value/countryGroup2.value()*100).toFixed(1) + '%)'; })
+        .transitionDuration(700)
+        .slicesCap(10) // max slices to generate (from high to low)
+        .label(function(d) { 
+            return d.key
+               + ' (' + (d.value / countryGroup2.value() * 100).toFixed(1) + '%)';
+        })
+        .title(function(d) { 
+            return d.key
+                + ': ' + d.value
+                + ' (' + (d.value / countryGroup2.value() * 100).toFixed(1) + '%)';
+        })
         //.externalLabels(10)
-        .othersGrouper(false);
+        .othersGrouper(false)
 
 
 
