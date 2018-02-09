@@ -46,6 +46,7 @@ The following data collection attributes/fields will be used as the basis of the
   - A JavaScript based wrapper library for D3.js, which makes plotting the charts a lot easier.
 - **[Crossfilter.js](http://square.github.io/crossfilter/)**
   - A JavaScript based data manipulation library that enables two way data binding.
+  - Crossfilter supports dimensions with arrays since version 1.4.0-alpha.06 which has been very helpful in developing this project
 - **[Queue.js]()**
   - An asynchronous helper library for data ingestion involving multiple apis.
 - **[Mongo DB](https://www.mongodb.com/)**
@@ -70,3 +71,7 @@ The following data collection attributes/fields will be used as the basis of the
 
 ## TO DO:
 - remove non developers from the MongoDB
+
+## Credit
+
+To make the bar chart responsice, I've adapted code from the following source https://css-tricks.com/snippets/jquery/done-resizing-event/ to reset chart's width and redraw it after window resizing by user has stopped (either by dragging the browser window with or changing orientation portrait/landscape).
