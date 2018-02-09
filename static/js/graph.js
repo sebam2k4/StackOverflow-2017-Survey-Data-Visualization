@@ -6,6 +6,7 @@ queue()
     .defer(d3.json, "/data")
     .await(makeGraphs);
 
+// print_filter() method for testing & development. - Remove for production
 function print_filter(filter) {
     var f = eval(filter);
     if (typeof (f.length) != "undefined") { } else { }
@@ -23,8 +24,7 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
     }
 
     data.forEach(function (d) {
-        // define the types
-        // split multiple answer strings to arrays
+        /* define the data types & split multiple survey answer strings to arrays */
         d.HaveWorkedLanguage = d.HaveWorkedLanguage.split("; ");
         d.HaveWorkedFramework = d.HaveWorkedFramework.split("; ");
         d.HaveWorkedDatabase = d.HaveWorkedDatabase.split("; ");
@@ -50,10 +50,10 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
 
     // get width for initial render of the bar chart. The bar chart is responsive
     // and it's width will adapt to screen width - see code at end
-    var width = document.getElementById('languageChartContainer').offsetWidth;
+    var chartWidth = document.getElementById('languageChartContainer').offsetWidth;
 
     languageChart
-        .width(width) // see if I can pass in a function that gets the width of the bootstrap container like clo-sm-12 dynamically?
+        .width(chartWidth) // see if I can pass in a function that gets the width of the bootstrap container like clo-sm-12 dynamically?
         .height(350)
         .margins({ top: 30, right: 50, bottom: 80, left: 50 })
         .dimension(languageDim)
@@ -65,10 +65,9 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         .gap(3)
         .renderHorizontalGridLines(true)
         //.elasticX(true)
-        
-
         .yAxis().ticks(6);
 
+    console.log(languageChart)
     // Pie Chart - Country
      /* function to make a string from a game's rating, showing which integer
     range it falls in */  
@@ -230,24 +229,27 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         .group(relatedLanguagesGroup);
 
 
-    dc.renderAll();
 
 
-    // make the language bar chart responsive
-    // how to make the bars change width as well?
-    //source for below code: https://css-tricks.com/snippets/jquery/done-resizing-event/
-    var resizer;
-    window.onresize = function(event) {
-        clearTimeout(resizer);
-        resizer = setTimeout(function() {
-            var newWidth = document.getElementById('languageChartContainer').offsetWidth;
+    // make charts responsive on window resize
+    // adapted from: https://css-tricks.com/snippets/jquery/done-resizing-event/
+    var resizeTimeout;
+    window.onresize = function() {
+        clearTimeout(resizeTimeout);
+        // resize and redraw the charts after a short delay once window resizing stops
+        resizeTimeout = setTimeout(function() {
+            // recalculate chart width
+            var newChartWidth = document.getElementById('languageChartContainer').offsetWidth;
+
+            // set new width and redraw charts
             languageChart
-                .width(newWidth)
-                .rescale() // resets the scale and bars widths + margins (gap)
-            
-            dc.renderAll();
-        }, 300);
+                .width(newChartWidth)
+                .rescale() // resets the scale and bars widths + bar margins (gaps)
+                .redraw(); 
+
+        }, 150);
     };
     
+    dc.renderAll();
 };
 
