@@ -78,7 +78,6 @@
     text-align: center;
 }
 
-/* Style northward tooltips differently */
 .d3-tip.n:after {
     margin: -1px 0 0 0;
     top: 100%;
@@ -89,18 +88,18 @@
     fill: black;
 }
 
-/* setting width to fill parent container for select menus
-check how this may affect bar, row, and other charts */
-.dc-chart { /* add .menu class in html */
+/* make all charts fill parent containers */
+.dc-chart {
     width: 100%
 }
+
 .dc-select-menu {
     background: slategray;
     width: 100%;
     border: none;
     position: relative;
     height: 31px;
-    font-size: 15px;
+    font-size: 1.25rem;
     color: white;
     vertical-align: middle;
     text-align: center;
@@ -125,6 +124,32 @@ check how this may affect bar, row, and other charts */
     }
 }
 
+@media only screen and (min-width: 992px) {
+    #languageChart .x.axis text {
+        font-size: 1.325rem;
+    }
+}
+
+#countryPieChart svg,
+#tabsSpaces svg {
+    display: block;
+    margin: auto;
+}
+
 .chart-notes {
     font-style: italic;
+}
+
+.footer {
+    text-align: center;
+    background-color: slategray;
+    color: white;
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+.footer a,
+.footer a:hover {
+    font-weight: 700;
+    color: white;
 }
