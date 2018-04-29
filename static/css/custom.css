@@ -14,12 +14,12 @@
 }
 
 #spinner {
-    border: 4px solid #22344b;
-    border-top: 4px solid white;
+    border: 3px solid #333;
+    border-top: 3px solid transparent;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin 1s linear infinite;
+    width: 70px;
+    height: 70px;
+    animation: spin 0.7s linear infinite;
 }
 
 @keyframes spin {
@@ -27,7 +27,34 @@
     100% { transform: rotate(360deg); }
 }
 
+.navbar {
+    background-color: slategray;
+    border-radius: 0;
+    margin-bottom: 0;
+    z-index: 1040;
+}
 
+.navbar-brand,
+.navbar a:hover {
+    color: white;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+    background-color: #e2eaf3;
+    border-bottom: 2px solid #bbc9d8;
+}
+
+.keen-dashboard {
+    padding: 60px;
+    background-image: url("../img/old_mathematics.png");
+}
+@media only screen and (max-width: 992px) {
+    .keen-dashboard {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
 /* TOOLTIPS */
 .d3-tip {
     line-height: 1;
@@ -69,7 +96,7 @@ check how this may affect bar, row, and other charts */
 }
 .dc-select-menu {
     background: slategray;
-    width: 85%;
+    width: 100%;
     border: none;
     position: relative;
     height: 31px;
@@ -89,11 +116,15 @@ check how this may affect bar, row, and other charts */
     transition: .5s;
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     #languageChart .x.axis text {
         -ms-transform: rotate(-90deg) translate(-10px, -13px); /* IE 9 */
         -webkit-transform: rotate(-90deg) translate(-10px, -13px); /* Safari */
         transform: rotate(-90deg) translate(-10px, -13px);
         transition: .5s;
     }
+}
+
+.chart-notes {
+    font-style: italic;
 }
