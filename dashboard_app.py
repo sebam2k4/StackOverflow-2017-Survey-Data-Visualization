@@ -36,8 +36,7 @@ def stack2017_data():
         'EmploymentStatus': True, 'FormalEducation': True, 'MajorUndergrad': True,
         'YearsProgram': True, 'DeveloperType': True, 'EducationTypes': True,
         'HaveWorkedLanguage': True, 'HaveWorkedFramework': True, 'HaveWorkedDatabase': True,
-        'IDE': True, 'Methodology': True, 'VersionControl': True,
-        'CareerSatisfaction': True, 'JobSatisfaction': True
+        'TabsSpaces': True
     }
 
     # Open a connection to MongoDB using a 'with' statement such that the

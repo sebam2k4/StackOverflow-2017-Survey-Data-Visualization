@@ -1,38 +1,36 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
 <div class="jumbotron">
-    <div class="container">
-      <h1>Coding Language Popularity</h1>
-      <p>Based on the Stack Overflow Survey 2017 Results</p>
-      <hr>
-      <div class="row">
-
-        <!-- Number Display - Number of Selected -->
-        <div class="col-sm-5">
-          <div class="chart-wrapper">
-            <div class="chart-title">
-              Total Selected
-            </div>
-            <div class="chart-stage">
-              <div id="numberSelectedND"></div>
-            </div>
+  <div class="container">
+    <h1>Coding Language Popularity</h1>
+    <p>Based on the Stack Overflow Survey 2017 Results</p>
+    <hr>
+    <div class="row">
+      <!-- Number Display - Number of Selected -->
+      <div class="col-sm-5">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Total Selected
+          </div>
+          <div class="chart-stage">
+            <div id="numberSelectedND"></div>
           </div>
         </div>
-        <div class="col-sm-7">
-          <button class="btn btn-warning" onclick="clear_charts()">Clear Selections</button>
-          <button class="btn btn-success">Take a Tour</button>
-        </div>
+      </div>
+      <!-- Clear and Tour buttons -->
+      <div class="col-sm-7">
+        <button class="btn btn-warning" onclick="clear_charts()">Clear Selections</button>
+        <button class="btn btn-success">Take a Tour</button>
       </div>
     </div>
   </div>
+</div>
 
 <div class="keen-dashboard container-fluid">
 
   <!-- ROW 1 -->
   <div class="row">
-
     <!-- Menu Select - Developer Type -->
     <div class="col-sm-6">
       <div class="chart-wrapper">
@@ -62,7 +60,7 @@
   <!-- /.ROW 2 -->
   <div class="row">
     <!-- Bar Chart - Languages -->
-    <div class="col-lg-8">
+    <div class="col-xs-12">
       <div class="chart-wrapper">
         <div class="chart-title">
           Languages Have Worked With
@@ -75,25 +73,13 @@
         </div>
       </div>
     </div>
-
-    <!-- Pie Chart - Country From -->
-    <div class="col-lg-4">
-      <div class="chart-wrapper">
-        <div class="chart-title">
-          Country
-        </div>
-        <div class="chart-stage">
-          <div id="countryPieChart"></div>
-        </div>
-      </div>
-    </div>
   </div>
   <!-- /.ROW 2 -->
-  
+
   <!-- ROW 3 -->
   <div class="row">
     <!-- Menu Select - Employment Status -->
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <div class="chart-wrapper">
         <div class="chart-title">
           Select Employment Status
@@ -104,36 +90,8 @@
       </div>
     </div>
 
-    <!-- Menu Select - Formal Education -->
-    <div class="col-sm-4">
-      <div class="chart-wrapper">
-        <div class="chart-title">
-          Select Formal Education
-        </div>
-        <div class="chart-stage">
-          <div id="formalEducationMenu"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Menu Select - Coding Education Type -->
-    <div class="col-sm-4">
-      <div class="chart-wrapper">
-        <div class="chart-title">
-          Coding Education outside of Formal
-        </div>
-        <div class="chart-stage">
-          <div id="educationTypesMenu"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /. ROW 3 -->
-
-  <!-- ROW 4 -->
-  <div class="row">
     <!-- Related Languages Menu -->
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <div class="chart-wrapper">
         <div class="chart-title">
           Related languages
@@ -142,35 +100,11 @@
           <div id="relatedLanguages"></div>
         </div>
       </div>
-    </div>
-
-    <!-- Menu Select - Major Undergrad -->
-    <div class="col-sm-4">
-      <div class="chart-wrapper">
-        <div class="chart-title">
-          Select Major Undergrad
-        </div>
-        <div class="chart-stage">
-          <div id="majorUndergradMenu"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Menu Select - -->
-    <div class="col-sm-4">
-      <div class="chart-wrapper">
-        <div class="chart-title">
-          Title
-        </div>
-        <div class="chart-stage">
-          <div id=""></div>
-        </div>
-      </div>
-    </div>
+    </div>    
   </div>
-  <!-- /.ROW 4 -->
-
-  <!-- ROW 5 -->
+  <!-- /.ROW 3 -->
+  
+  <!-- ROW 4 -->
   <div class="row">
     <!-- Row Chart - Database Worked With-->
     <div class="col-sm-6">
@@ -184,7 +118,7 @@
       </div>
     </div>
 
-    <!-- Menu Select - Framework Worked With -->
+    <!-- Row Chart - Framework Worked With -->
     <div class="col-sm-6">
       <div class="chart-wrapper">
         <div class="chart-title">
@@ -196,10 +130,75 @@
       </div>
     </div>
   </div>
+  <!-- /. ROW 4 -->
+
+  <!-- ROW 5 -->
+  <div class="row">
+    <!-- Menu Select - Formal Education -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Select Formal Education
+        </div>
+        <div class="chart-stage">
+          <div id="formalEducationMenu"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Select - Major Undergrad -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Select Undergrad Major
+        </div>
+        <div class="chart-stage">
+          <div id="majorUndergradMenu"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Select - Coding Education Type -->
+    <div class="col-sm-4">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Select Other Coding Education
+        </div>
+        <div class="chart-stage">
+          <div id="educationTypesMenu"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- /.ROW 5 -->
 
+  <!-- ROW 6 -->
+  <div class="row">
+    <!-- Pie Chart - Country From -->
+    <div class="col-md-6">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Country of Residence
+        </div>
+        <div class="chart-stage">
+          <div id="countryPieChart"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie Chart - Tabs or Spaces -->
+    <div class="col-md-6">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Tabs or Spaces
+        </div>
+        <div class="chart-stage">
+          <div id="tabsSpaces"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.ROW 6 -->
+
 </div>
-
-
-
 {% endblock %}
