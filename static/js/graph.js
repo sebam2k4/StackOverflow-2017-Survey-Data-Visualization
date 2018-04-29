@@ -23,6 +23,8 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
         throw error;
     }
 
+    // remove loader
+    $("#loader").fadeOut();
     data.forEach(function (d) {
         /* define the data types & split multiple survey answer strings to arrays */
         d.HaveWorkedLanguage = d.HaveWorkedLanguage.split("; ");
