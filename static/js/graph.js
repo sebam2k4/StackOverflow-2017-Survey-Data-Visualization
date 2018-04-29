@@ -262,5 +262,39 @@ function makeGraphs(error, data) { //later, change back to residentialPurchases
     };
     
     dc.renderAll();
+
+    /* TOOLTIPS */
+
+    // initialize tooltips for languages bar chart tooltip
+    var bar_tooltip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+            return "<strong>" + d.data.key + ":</strong> <span style='color:red'>" + d.data.value + "</span>";
+        })
+
+    d3.selectAll("#languageChart .bar")
+        .call(bar_tooltip)
+        .on('mouseover', bar_tooltip.show)
+        .on('mouseout', bar_tooltip.hide);
+
+    // initialize tooltips for database and frameworks row charts
+    var row_tooltip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+            return "<strong>" + d.key + ":</strong> <span style='color:red'>" + d.value + "</span>";
+        })
+
+    d3.selectAll("#databaseChart .row")
+        .call(row_tooltip)
+        .on('mouseover', row_tooltip.show)
+        .on('mouseout', row_tooltip.hide);
+
+    d3.selectAll("#frameworkChart .row")
+        .call(row_tooltip)
+        .on('mouseover', row_tooltip.show)
+        .on('mouseout', row_tooltip.hide);
+
 };
 
