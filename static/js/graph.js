@@ -5,15 +5,6 @@ queue()
     .defer(d3.json, "/data")
     .await(makeGraphs);
 
-// print_filter() method for testing & development. - Remove for production
-function print_filter(filter) {
-    var f = eval(filter);
-    if (typeof (f.length) != "undefined") { } else { }
-    if (typeof (f.top) != "undefined") { f = f.top(Infinity); } else { }
-    if (typeof (f.dimension) != "undefined") { f = f.dimension(function (d) { return ""; }).top(Infinity); } else { }
-    console.log(filter + "(" + f.length + ") = " + JSON.stringify(f).replace("[", "[\n\t").replace(/}\,/g, "},\n\t").replace("]", "\n]"));
-}
-
 // if error occurs here then most likely due to server or database problem
 function makeGraphs(error, data) {
     if (error) {
@@ -43,7 +34,7 @@ function makeGraphs(error, data) {
         dc.renderAll();
     }
 
-
+    //Create a Crossfilter instance
     var stack2017 = crossfilter(data);
 
     data.forEach(function (d) {
@@ -62,9 +53,9 @@ function makeGraphs(error, data) {
     var all = stack2017.groupAll();
     var numberSelectedND = dc.numberDisplay("#numberSelectedND");
     numberSelectedND
-    .formatNumber(d3.format(",.0f"))
-    .valueAccessor(function (d) {return d;})
-    .group(all);
+        .formatNumber(d3.format(",.0f"))
+        .valueAccessor(function (d) {return d;})
+        .group(all);
 
 
     /**
@@ -111,7 +102,7 @@ function makeGraphs(error, data) {
     var languageChart = dc.barChart("#languageChart");
 
     // get width for initial render of the bar chart. The bar chart is responsive
-    // and it's width will adapt to screen width - see code at end
+    // and its width will adapt to screen width - see onresize event handler at bottom.
     var barChartWidth = $('#languageChartContainer').offsetWidth;
 
     languageChart
@@ -137,7 +128,7 @@ function makeGraphs(error, data) {
         return d.EmploymentStatus;
     });
     var languageByEmploymentStatus = employmentStatusDim.group();
-    var employmentStatusMenu = dc.selectMenu("#employmentStatusMenu")
+    var employmentStatusMenu = dc.selectMenu("#employmentStatusMenu");
     employmentStatusMenu
         .dimension(employmentStatusDim)
         .group(languageByEmploymentStatus);
@@ -152,7 +143,7 @@ function makeGraphs(error, data) {
     var relatedLanguagesGroup = relatedLanguagesDim.group();
     // filter out "NA" data keys from chart
     var relatedLanguagesGroup_filtered = remove_NA_keys(relatedLanguagesGroup);
-    var relatedLanguagesMenu = dc.selectMenu("#relatedLanguages")
+    var relatedLanguagesMenu = dc.selectMenu("#relatedLanguages");
     relatedLanguagesMenu
         .dimension(relatedLanguagesDim)
         .group(relatedLanguagesGroup_filtered);
@@ -166,7 +157,7 @@ function makeGraphs(error, data) {
     }, true);
     var languageByDatabaseGroup = databaseDim.group();
     // filter out "NA" data keys from chart
-    var languageByDatabaseGroup_filtered = remove_NA_keys(languageByDatabaseGroup)
+    var languageByDatabaseGroup_filtered = remove_NA_keys(languageByDatabaseGroup);
     var databaseChart = dc.rowChart("#databaseChart");
 
     var databaseChartWidth = $("#databaseChart").offsetWidth;
@@ -191,7 +182,7 @@ function makeGraphs(error, data) {
     }, true)
     var languageByFrameworkGroup = frameworkDim.group();
     // filter out "NA" data keys from chart
-    var languageByFrameworkGroup_filtered = remove_NA_keys(languageByFrameworkGroup)
+    var languageByFrameworkGroup_filtered = remove_NA_keys(languageByFrameworkGroup);
     var frameworkChart = dc.rowChart("#frameworkChart");
 
     var frameworkChartWidth = $("#frameworkChart").offsetWidth;
@@ -215,7 +206,7 @@ function makeGraphs(error, data) {
         return d.FormalEducation;
     });
     var languageByFormalEducation = formalEducationDim.group();
-    var formalEducationMenu = dc.selectMenu("#formalEducationMenu")
+    var formalEducationMenu = dc.selectMenu("#formalEducationMenu");
     formalEducationMenu
         .dimension(formalEducationDim)
         .group(languageByFormalEducation);
@@ -227,7 +218,7 @@ function makeGraphs(error, data) {
         return d.MajorUndergrad;
     });
     var languageByMajorUndergradGroup = majorUndergradDim.group();
-    var majorUndergradMenu = dc.selectMenu("#majorUndergradMenu")
+    var majorUndergradMenu = dc.selectMenu("#majorUndergradMenu");
     majorUndergradMenu
         .dimension(majorUndergradDim)
         .group(languageByMajorUndergradGroup);
@@ -356,9 +347,9 @@ function makeGraphs(error, data) {
         });
 
     d3.selectAll(".pie-slice")
-    .call(pie_tooltip)
-    .on('mouseover', pie_tooltip.show)
-    .on('mouseout', pie_tooltip.hide);
+        .call(pie_tooltip)
+        .on('mouseover', pie_tooltip.show)
+        .on('mouseout', pie_tooltip.hide);
     
     // initialize tooltips for row charts
     var row_tooltip = d3.tip()

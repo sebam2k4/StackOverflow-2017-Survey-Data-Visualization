@@ -55,6 +55,7 @@
         padding-right: 40px;
     }
 }
+
 /* TOOLTIPS */
 .d3-tip {
     line-height: 1;
@@ -88,6 +89,9 @@
     fill: black;
 }
 
+.tooltip-value {
+    color: orange;
+}
 /* make all charts fill parent containers */
 .dc-chart {
     width: 100%
