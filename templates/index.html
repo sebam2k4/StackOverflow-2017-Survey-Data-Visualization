@@ -3,15 +3,17 @@
 {% block content %}
 <div class="jumbotron">
   <div class="container">
-    <h1>Coding Language Popularity</h1>
-    <p>Based on the Stack Overflow Survey 2017 Results</p>
+    <div data-step="1" data-intro="Hi! This is an interactive dashboard for exploring data from responses to Stack Overflow's 2017 Annual Developer Survey. Select different options on charts and select menus to filter the data - then watch charts react to your selections! Have fun!" data-position="down">
+      <h1>Coding Language Popularity</h1>
+      <p>Based on the Stack Overflow Survey 2017 Results</p>
+    </div>
     <hr>
     <div class="row">
       <!-- Number Display - Number of Selected -->
       <div class="col-sm-5">
         <div class="chart-wrapper">
           <div class="chart-title">
-            Total Selected
+            Total Selected Developer Responses
           </div>
           <div class="chart-stage">
             <div id="numberSelectedND"></div>
@@ -20,8 +22,8 @@
       </div>
       <!-- Clear and Tour buttons -->
       <div class="col-sm-7">
-        <button class="btn btn-warning" onclick="clear_charts()">Clear Selections</button>
-        <button class="btn btn-success">Take a Tour</button>
+        <button class="btn btn-warning" onclick="clear_charts()"  data-step="10" data-intro="Oh one more thing! This handy button will clear any selections you made. Have fun and thank you for visiting!" data-position="left">Clear Selections</button>
+        <button class="btn btn-success" autofocus onclick="javascript:introJs().start();">Take a Tour</button>
       </div>
     </div>
   </div>
@@ -30,7 +32,7 @@
 <div class="keen-dashboard container-fluid">
 
   <!-- ROW 1 -->
-  <div class="row">
+  <div class="row" data-step="3" data-intro="Here you can apply filters. You can filter by 'developer type' or by 'professional type' or both!" data-position="down">
     <!-- Menu Select - Developer Type -->
     <div class="col-sm-6">
       <div class="chart-wrapper">
@@ -61,7 +63,7 @@
   <div class="row">
     <!-- Bar Chart - Languages -->
     <div class="col-xs-12">
-      <div class="chart-wrapper">
+      <div class="chart-wrapper" data-step="2" data-intro="This is the main chart showing the popularity of programming languages." data-position="up">
         <div class="chart-title">
           Languages Have Worked With
         </div>
@@ -79,7 +81,7 @@
   <!-- ROW 3 -->
   <div class="row">
     <!-- Menu Select - Employment Status -->
-    <div class="col-sm-6">
+    <div class="col-sm-6" data-step="4" data-intro="Here you can filter the data by developer's employment status" data-position="right">
       <div class="chart-wrapper">
         <div class="chart-title">
           Select Employment Status
@@ -91,7 +93,7 @@
     </div>
 
     <!-- Related Languages Menu -->
-    <div class="col-sm-6">
+    <div class="col-sm-6" data-step="5" data-intro="And here you can select any related coding language. For example you can select Python here and then select C++ on the main language chart by clicking the appropriate bar. This will show you data related to developers who use both languages." data-position="left">
       <div class="chart-wrapper">
         <div class="chart-title">
           Related languages
@@ -105,7 +107,7 @@
   <!-- /.ROW 3 -->
   
   <!-- ROW 4 -->
-  <div class="row">
+  <div class="row" data-step="6" data-intro="Here are a couple of charts showing most popular database environments and web frameworks/libraries based on your selections. You can also click on the bars to filter by specific database or framework" data-position="down">
     <!-- Row Chart - Database Worked With-->
     <div class="col-sm-6">
       <div class="chart-wrapper">
@@ -133,12 +135,12 @@
   <!-- /. ROW 4 -->
 
   <!-- ROW 5 -->
-  <div class="row">
+  <div class="row" data-step="7" data-intro="Here you can apply some filters related to developers' formal and non-formal education" data-position="left">
     <!-- Menu Select - Formal Education -->
     <div class="col-sm-4">
       <div class="chart-wrapper">
         <div class="chart-title">
-          Select Formal Education
+          Select Level of Formal Education
         </div>
         <div class="chart-stage">
           <div id="formalEducationMenu"></div>
@@ -176,7 +178,7 @@
   <div class="row">
     <!-- Pie Chart - Country From -->
     <div class="col-md-6">
-      <div class="chart-wrapper">
+      <div class="chart-wrapper" data-step="8" data-intro="This chart shows the developers' country of residence " data-position="right">
         <div class="chart-title">
           Country of Residence
         </div>
@@ -187,7 +189,7 @@
     </div>
 
     <!-- Pie Chart - Tabs or Spaces -->
-    <div class="col-md-6">
+    <div class="col-md-6" data-step="9" data-intro="And finally a fun one. Are tabs or spaces more popular based on your selections? " data-position="left">
       <div class="chart-wrapper">
         <div class="chart-title">
           Tabs or Spaces
