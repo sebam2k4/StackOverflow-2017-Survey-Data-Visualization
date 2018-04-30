@@ -49,4 +49,4 @@ def stack2017_data():
         return json.dumps(list(projects))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
