@@ -45,9 +45,7 @@ def stack2017_data():
         # Define which collection we wish to access
         collection = connection[DBS_NAME][COLLECTION_NAME]
         # Retrieve a result set only with the fields defined in FIELDS
-        # and limit the results to 55000. Using projection redeuces network overhead and processing requirements
-        # by limiting fields that are returned in t results documents.
-        projects = collection.find(projection=FIELDS, limit=55000)
+        projects = collection.find(projection=FIELDS)
         # Convert projects to a list in a JSON object and return the JSON data
         return json.dumps(list(projects))
 
