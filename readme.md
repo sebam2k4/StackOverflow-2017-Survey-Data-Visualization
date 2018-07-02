@@ -141,6 +141,8 @@ The application is deployed on Heroku and uses a free mLab MongoDB add-on for st
 
 The deployed application can be access here: [https://stack-overflow-2017-dev-survey.herokuapp.com/](https://stack-overflow-2017-dev-survey.herokuapp.com/)
 
+**NOTE:** Project is deployed to a free dyno and it may go to sleep. Please be patient on initial load.
+
 ## Testing
 
 A number of manual tests was performed to make sure the app is working as expected and is responsive accross different devices and screen sizes.
@@ -174,7 +176,3 @@ Some bugs discovered after testing the application:
 - Stack Overflow for their 2017 Developer Survey data.
 
 - old-mathematics.png background image obtained from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/)
-
-## Contributing
-
-As this is a graded project for a course, no contributions are accepted at this moment :) I suppose after it's been graded then it can be opened to contributions. However, feel free to clone the project's repository and experiment!
