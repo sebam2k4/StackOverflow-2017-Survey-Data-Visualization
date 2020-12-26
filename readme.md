@@ -1,3 +1,5 @@
+**Note: MongoDB addon on Heroku got disabled/detached - need to find a new plugin or change db**
+
 # Programming Language Popularity Data Visualization
 
 ## Overview
